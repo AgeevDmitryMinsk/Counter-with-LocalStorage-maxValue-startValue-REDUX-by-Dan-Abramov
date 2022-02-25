@@ -1,38 +1,83 @@
 .App {
-  text-align: center;
+    text-align: center;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    min-height: 10px;
+    min-width: 10px;
+    border: 1px solid cyan;
+    padding: 5px;
+    border-radius: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container_buttons {
+    border: 1px solid cyan;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.countCSS {
+    background-color: aqua;
+    color: #282c34;
+    border-radius: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.button_inc {
+    background-color: aqua;
+    color: #282c34;
+    border-radius: 5px;
+    margin-left: 5px;
+    font-size: 12px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button_reset {
+    background-color: aqua;
+    color: #282c34;
+    margin-left: 5px;
+    border-radius: 5px;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.red_count {
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+    transition: all .5s ease-in-out;
+    animation: .3s linear 0s normal none 1 running red_count;
+}
+
+@keyframes red_count {
+    0% {
+        transform: scale(1, 1);
+    }
+    100% {
+        transform: scale(1.1, 1.1);
+    }
+}
+
+
+
+.button_opac {
+    opacity: 0.1;
+    transition: all .3s ease-in-out;
+    animation: 1s linear 0s normal none 1 running button_opac;
+}
+
+@keyframes button_opac {
+    0% {
+        transform: scale(1, 1);
+    }
+    100% {
+        transform: scale(1.1, 1.1);
+    }
 }

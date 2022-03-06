@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import Counter from "./Counter";
 import Button_inc from "./Button_inc";
@@ -31,8 +30,44 @@ function App() {
 	let universalButtonResetCSS = count === 0 ? "button_reset button_opac" : "button_reset"
 
 	let universalButtonIncCSS = count > 4 ? "button_inc button_opac" : "button_inc"
+
+
+	function setToLocalStorageHandler() {
+		localStorage.setItem(`counterKey`, JSON.stringify(count))
+
+		localStorage.setItem(`counterKeyPlus1`, JSON.stringify(count+1))
+	}
+
+	function getFromLocalStorageHandler() {
+		let valueAsString = 	localStorage.getItem(`counterKey`)
+		console.log(43, valueAsString)
+		if (valueAsString) {
+			let valueAsNumber = JSON.parse(valueAsString)
+			console.log(46, valueAsNumber)
+			setCount(valueAsNumber)
+		}
+	}
+
+	function clearLocalStorageHandler() {
+		localStorage.clear()
+		setCount(0)
+	}
+
+	function remove_1_itemFromLocalStorageHandler() {
+		localStorage.removeItem(`counterKeyPlus1`)
+	}
+	//1й useEffect сначала добавляет из localstorage
+	// сохраненное значение count
+	useEffect(getFromLocalStorageHandler, [])
+
+	//2й useEffect обновляет значение count в localstorage
+	// сначала 1й, затем 2й useEffect. Иначе count при перезагрузке
+	//браузера будет брать данные из initial useState
+	useEffect(setToLocalStorageHandler, [count])
+
 	return (
 		<div className="App">
+			<h4>Counter with LocalStarage</h4>
 			<div className="container">
 				<Counter count={count}/>
 				<div className="container_buttons">
@@ -48,6 +83,22 @@ function App() {
 													 callback={resetCount}
 													 disabledOnCondition={disabledOnConditionReset(count)}
 					/>
+					<button onClick={setToLocalStorageHandler}>
+						setToLocalStorage
+					</button>
+
+					<button onClick={getFromLocalStorageHandler}>
+						getFromLocalStorage
+					</button>
+
+					<button onClick={clearLocalStorageHandler}>
+						clearLocalStorage
+					</button>
+
+					<button onClick={remove_1_itemFromLocalStorageHandler}>
+						remove_1_itemFromLocalStorage
+					</button>
+
 				</div>
 			</div>
 		</div>

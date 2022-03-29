@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/React_Increment_Reset_Btn/static/css/main.cb0bc910.css",
+    "main.js": "/React_Increment_Reset_Btn/static/js/main.d522d5b7.js",
+    "static/js/787.ea573bca.chunk.js": "/React_Increment_Reset_Btn/static/js/787.ea573bca.chunk.js",
+    "index.html": "/React_Increment_Reset_Btn/index.html",
+    "main.cb0bc910.css.map": "/React_Increment_Reset_Btn/static/css/main.cb0bc910.css.map",
+    "main.d522d5b7.js.map": "/React_Increment_Reset_Btn/static/js/main.d522d5b7.js.map",
+    "787.ea573bca.chunk.js.map": "/React_Increment_Reset_Btn/static/js/787.ea573bca.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb0bc910.css",
+    "static/js/main.d522d5b7.js"
+  ]
+}

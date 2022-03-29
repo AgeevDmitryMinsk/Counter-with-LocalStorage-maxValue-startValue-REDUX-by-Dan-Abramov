@@ -35,7 +35,7 @@ function App() {
 	function setToLocalStorageHandler() {
 		localStorage.setItem(`counterKey`, JSON.stringify(count))
 
-		localStorage.setItem(`counterKeyPlus1`, JSON.stringify(count+1))
+		//localStorage.setItem(`counterKeyPlus1`, JSON.stringify(count+1))
 	}
 
 	function getFromLocalStorageHandler() {
@@ -53,9 +53,9 @@ function App() {
 		setCount(0)
 	}
 
-	function remove_1_itemFromLocalStorageHandler() {
-		localStorage.removeItem(`counterKeyPlus1`)
-	}
+	// function remove_1_itemFromLocalStorageHandler() {
+	// 	localStorage.removeItem(`counterKeyPlus1`)
+	// }
 	//1й useEffect сначала добавляет из localstorage
 	// сохраненное значение count
 	useEffect(getFromLocalStorageHandler, [])
@@ -63,7 +63,7 @@ function App() {
 	//2й useEffect обновляет значение count в localstorage
 	// сначала 1й, затем 2й useEffect. Иначе count при перезагрузке
 	//браузера будет брать данные из initial useState
-	useEffect(setToLocalStorageHandler, [count])
+	//useEffect(setToLocalStorageHandler, [count])
 
 	return (
 		<div className="App">
@@ -95,9 +95,9 @@ function App() {
 						clearLocalStorage
 					</button>
 
-					<button onClick={remove_1_itemFromLocalStorageHandler}>
-						remove_1_itemFromLocalStorage
-					</button>
+					{/*<button onClick={remove_1_itemFromLocalStorageHandler}>*/}
+					{/*	remove_1_itemFromLocalStorage*/}
+					{/*</button>*/}
 
 				</div>
 			</div>

@@ -7,19 +7,21 @@ import './App.css';
 import {MaxStartValueComponent} from "./MaxStartValueComponent";
 import CounterIncrementResetComponent from "./Counter_Increment_Reset_Component";
 
+export type WindowType = `counterWindow` | `MaxStartValue`
+
 function App() {
 
 	const [maxValue, setMaxValue] = useState<number>(5)
 	const [startValue, setStartValue] = useState<number>(0)
 	const [count, setCount] = useState<number>(startValue)
 	const [error, setError] = useState(``)
+	const [window, setWindow] = useState<WindowType>(`counterWindow`)
 
 
 	function addPlus() {
 		if (count < maxValue) {
 			setCount(count + 1)
 		}
-
 	}
 
 	function resetCount() {
@@ -27,9 +29,9 @@ function App() {
 	}
 
 	function disabledOnConditionIncrement() {
-		console.log(28, startValue > maxValue) //false
-		console.log(29, !error) //true
-		console.log(30, !error || startValue > maxValue) // true
+		// console.log(28, startValue > maxValue) //false
+		// console.log(29, !error) //true
+		// console.log(30, !error || startValue > maxValue) // true
 		return !error || startValue > maxValue
 	}
 
@@ -40,7 +42,7 @@ function App() {
 
 	function disabledOnConditionReset(count: number) {
 		return count === startValue
-}
+	}
 
 
 	function setToLocalStorageHandler() {
@@ -51,7 +53,7 @@ function App() {
 	function getFromLocalStorageHandler() {
 		let maxValueKeyAsString = localStorage.getItem(`maxValueKey`)
 		let startValueKeyAsString = localStorage.getItem(`startValueKey`)
-		if ( maxValueKeyAsString && startValueKeyAsString) {
+		if (maxValueKeyAsString && startValueKeyAsString) {
 			let maxValueKeyAsNumber = JSON.parse(maxValueKeyAsString)
 			let startValueKeyAsNumber = JSON.parse(startValueKeyAsString)
 			setMaxValue(maxValueKeyAsNumber)
@@ -112,20 +114,26 @@ function App() {
 		setError('no errors')
 		setCount(startValue)
 		setToLocalStorageHandler()
+		setWindow(`counterWindow`)
 
+	}
+
+	function goFromCounterToMaxStartValue() {
+		setWindow(`MaxStartValue`)
 	}
 
 	return (
 		<div className="App">
 			<h4>Counter with LocalStorage + maxValue & startValue </h4>
 			<div className={"container_global"}>
-				<MaxStartValueComponent startValue={startValue} maxValue={maxValue}
-										callBackOnChangeMaxValue={onChangeMaxValue}
-										callBackOnChangeStartValue={onChangeStartValue}
-										callBackSetValue={setValue}
-										count={count}
-										callBackDisabledOnConditionSet={disabledOnConditionSet}
-				/>
+				{window === `MaxStartValue` &&
+                    <MaxStartValueComponent startValue={startValue} maxValue={maxValue}
+                                            callBackOnChangeMaxValue={onChangeMaxValue}
+                                            callBackOnChangeStartValue={onChangeStartValue}
+                                            callBackSetValue={setValue}
+                                            count={count}
+                                            callBackDisabledOnConditionSet={disabledOnConditionSet}
+                    />}
 				{/*<div className="container">*/}
 				{/*	<div className="container_buttons">*/}
 				{/*		<div>max value: <input type={"number"} className={inputValueCSS} value={maxValue}*/}
@@ -144,19 +152,20 @@ function App() {
 				{/*	</div>*/}
 				{/*</div>*/}
 
-
-				<CounterIncrementResetComponent count={count}
-												maxValue={maxValue}
-												startValue={startValue}
-												error={error}
-												callBackAddPlus={addPlus}
-												callBackDisabledOnConditionIncrement={disabledOnConditionIncrement}
-												callBackResetCount={resetCount}
-												callBackDisabledOnConditionReset={disabledOnConditionReset}
-												callBackSetToLocalStorageHandler={setToLocalStorageHandler}
-												callBackGetFromLocalStorageHandler={getFromLocalStorageHandler}
-												callBackClearLocalStorageHandler={clearLocalStorageHandler}
-				/>
+				{window === `counterWindow` &&
+                    <CounterIncrementResetComponent count={count}
+                                                    maxValue={maxValue}
+                                                    startValue={startValue}
+                                                    error={error}
+                                                    callBackAddPlus={addPlus}
+                                                    callBackDisabledOnConditionIncrement={disabledOnConditionIncrement}
+                                                    callBackResetCount={resetCount}
+                                                    callBackDisabledOnConditionReset={disabledOnConditionReset}
+                                                    callBackSetToLocalStorageHandler={setToLocalStorageHandler}
+                                                    callBackGetFromLocalStorageHandler={getFromLocalStorageHandler}
+                                                    callBackClearLocalStorageHandler={clearLocalStorageHandler}
+                                                    callBackSetFromCounter={goFromCounterToMaxStartValue}
+                    />}
 				{/*<div className="container">*/}
 				{/*	<Counter count={count} maxValue={maxValue} error={error} startValue={startValue}/>*/}
 				{/*	<div className="container_buttons">*/}

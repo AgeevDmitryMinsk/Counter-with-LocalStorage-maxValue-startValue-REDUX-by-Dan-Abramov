@@ -15,6 +15,7 @@ type CounterIncrementResetComponentType = {
 	callBackSetToLocalStorageHandler: () => void
 	callBackGetFromLocalStorageHandler: () => void
 	callBackClearLocalStorageHandler: () => void
+	callBackSetFromCounter: () => void
 
 }
 
@@ -29,12 +30,14 @@ const CounterIncrementResetComponent: React.FC<CounterIncrementResetComponentTyp
 																						  callBackDisabledOnConditionReset,
 																						  callBackSetToLocalStorageHandler,
 																						  callBackGetFromLocalStorageHandler,
-																						  callBackClearLocalStorageHandler
+																						  callBackClearLocalStorageHandler,
+																						  callBackSetFromCounter
 
 
 																					  }) => {
 	let universalButtonIncCSS = (count >= maxValue) || (!error) ? "button_inc button_opac" : "button_inc"
 	let universalButtonResetCSS = count === startValue ? "button_reset button_opac" : "button_reset"
+	let universalButtonSetInCounterCSS = "button_set"
 
 	function addPlus() {
 		callBackAddPlus()
@@ -42,6 +45,10 @@ const CounterIncrementResetComponent: React.FC<CounterIncrementResetComponentTyp
 
 	function resetCount() {
 		callBackResetCount()
+	}
+
+	function setToMaxStartValueComponent() {
+		callBackSetFromCounter()
 	}
 
 	function setToLocalStorageHandler() {
@@ -74,17 +81,24 @@ const CounterIncrementResetComponent: React.FC<CounterIncrementResetComponentTyp
 					// disabledOnCondition={disabledOnConditionReset(count)}
 								 disabledOnCondition={callBackDisabledOnConditionReset(count)}
 				/>
-				<button onClick={setToLocalStorageHandler}>
-					setToLocalStorage
-				</button>
 
-				<button onClick={getFromLocalStorageHandler}>
-					getFromLocalStorage
-				</button>
+				<UniversalButton name={"set values"}
+								 className={universalButtonSetInCounterCSS}
+								 callback={setToMaxStartValueComponent}
+					// disabledOnCondition={disabledOnConditionReset(count)}
+								 disabledOnCondition={false}
+				/>
+				{/*<button onClick={setToLocalStorageHandler}>*/}
+				{/*	setToLocalStorage*/}
+				{/*</button>*/}
 
-				<button onClick={clearLocalStorageHandler}>
-					clearLocalStorage
-				</button>
+				{/*<button onClick={getFromLocalStorageHandler}>*/}
+				{/*	getFromLocalStorage*/}
+				{/*</button>*/}
+
+				{/*<button onClick={clearLocalStorageHandler}>*/}
+				{/*	clearLocalStorage*/}
+				{/*</button>*/}
 
 				{/*<button onClick={remove_1_itemFromLocalStorageHandler}>*/}
 				{/*	remove_1_itemFromLocalStorage*/}

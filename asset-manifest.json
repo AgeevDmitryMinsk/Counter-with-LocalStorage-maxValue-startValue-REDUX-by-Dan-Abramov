@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/React_Increment_Reset_Btn/static/css/main.d6536a51.css",
-    "main.js": "/React_Increment_Reset_Btn/static/js/main.3f708183.js",
+    "main.js": "/React_Increment_Reset_Btn/static/js/main.ca545197.js",
     "static/js/787.ea573bca.chunk.js": "/React_Increment_Reset_Btn/static/js/787.ea573bca.chunk.js",
     "index.html": "/React_Increment_Reset_Btn/index.html",
     "main.d6536a51.css.map": "/React_Increment_Reset_Btn/static/css/main.d6536a51.css.map",
-    "main.3f708183.js.map": "/React_Increment_Reset_Btn/static/js/main.3f708183.js.map",
+    "main.ca545197.js.map": "/React_Increment_Reset_Btn/static/js/main.ca545197.js.map",
     "787.ea573bca.chunk.js.map": "/React_Increment_Reset_Btn/static/js/787.ea573bca.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d6536a51.css",
-    "static/js/main.3f708183.js"
+    "static/js/main.ca545197.js"
   ]
 }

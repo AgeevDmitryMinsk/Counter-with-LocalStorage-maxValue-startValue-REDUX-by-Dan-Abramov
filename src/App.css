@@ -96,7 +96,7 @@
 .inputValue {
     border: 1px solid cyan;
     border-radius: 5px;
-    max-width: 50px;
+    max-width: 80px;
     text-align: center;
     font-size: calc(20px + 2vmin);
 }

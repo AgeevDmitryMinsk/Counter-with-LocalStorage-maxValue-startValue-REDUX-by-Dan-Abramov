@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/React_Increment_Reset_Btn/static/css/main.b1107a04.css",
-    "main.js": "/React_Increment_Reset_Btn/static/js/main.c6e55cac.js",
+    "main.css": "/React_Increment_Reset_Btn/static/css/main.cb9cce6a.css",
+    "main.js": "/React_Increment_Reset_Btn/static/js/main.da9625f5.js",
     "static/js/787.ea573bca.chunk.js": "/React_Increment_Reset_Btn/static/js/787.ea573bca.chunk.js",
     "index.html": "/React_Increment_Reset_Btn/index.html",
-    "main.b1107a04.css.map": "/React_Increment_Reset_Btn/static/css/main.b1107a04.css.map",
-    "main.c6e55cac.js.map": "/React_Increment_Reset_Btn/static/js/main.c6e55cac.js.map",
+    "main.cb9cce6a.css.map": "/React_Increment_Reset_Btn/static/css/main.cb9cce6a.css.map",
+    "main.da9625f5.js.map": "/React_Increment_Reset_Btn/static/js/main.da9625f5.js.map",
     "787.ea573bca.chunk.js.map": "/React_Increment_Reset_Btn/static/js/787.ea573bca.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b1107a04.css",
-    "static/js/main.c6e55cac.js"
+    "static/css/main.cb9cce6a.css",
+    "static/js/main.da9625f5.js"
   ]
 }

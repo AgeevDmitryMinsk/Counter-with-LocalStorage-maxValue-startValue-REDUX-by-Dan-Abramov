@@ -1,27 +1,31 @@
-import React from 'react';
+import React from 'react'
 
 type UniversalButtonType = {
-	name: string
-	className: string
-	callback: ()=>void
-	disabledOnCondition:boolean
+    name: string
+    className: string
+    callback: () => void
+    disabledOnCondition: boolean
 }
 
-const UniversalButton:React.FC<UniversalButtonType>
-	= ({name, className, callback, disabledOnCondition}) => {
+const UniversalButton: React.FC<UniversalButtonType> = ({
+    name,
+    className,
+    callback,
+    disabledOnCondition,
+}) => {
+    function onClickHandler() {
+        callback()
+    }
 
-	function onClickHandler(){
-		callback()
-	}
+    return (
+        <button
+            className={className}
+            onClick={onClickHandler}
+            disabled={disabledOnCondition}
+        >
+            {name}
+        </button>
+    )
+}
 
-	return (
-		<button className={className}
-					onClick={onClickHandler}
-						disabled={disabledOnCondition}
-		>
-			{name}
-		</button>
-	);
-};
-
-export default UniversalButton;
+export default UniversalButton

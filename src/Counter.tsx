@@ -1,31 +1,37 @@
-import React from 'react';
+import React from 'react'
 
 type CounterType = {
-	count: number
-	maxValue: number
-	error:string
-	startValue:number
+    count: number
+    maxValue: number
+    error: string
+    startValue: number
 }
 
+const Counter: React.FC<CounterType> = ({
+    count,
+    maxValue,
+    error,
+    startValue,
+}) => {
+    let countCSSClass = count < maxValue ? 'countCSS' : 'countCSS red_count'
 
-const Counter: React.FC<CounterType>
-	= ({count, maxValue, error, startValue}) => {
+    // console.log(17, !!error)
+    // console.log(18, !error)
+    // console.log(20, startValue)
 
-	let countCSSClass = count < maxValue
-		? "countCSS"
-		: "countCSS red_count"
+    return (
+        <>
+            {!error && startValue !== maxValue && startValue >= 0 && (
+                <div className={countCSSClass}>at first please set values</div>
+            )}
+            {!!error && count <= maxValue && (
+                <div className={countCSSClass}>{count}</div>
+            )}
+            {!error && (startValue === maxValue || startValue < 0) && (
+                <div className="red_count">incorrect value!</div>
+            )}
+        </>
+    )
+}
 
-	// console.log(17, !!error)
-	// console.log(18, !error)
-	// console.log(20, startValue)
-
-	return (
-		<>
-			{!error && (startValue !== maxValue) && ( startValue >=0 )  && <div className={countCSSClass}>at first please set values</div>}
-			{!!error && count <= maxValue && <div className={countCSSClass}>{count}</div>}
-			{ !error && ((startValue === maxValue) || (startValue <0 ) )  && <div className="red_count">incorrect value!</div>}
-		</>
-	);
-};
-
-export default Counter;
+export default Counter

@@ -96,7 +96,7 @@
 .inputValue {
     border: 1px solid cyan;
     border-radius: 5px;
-    max-width: 80px;
+    max-width: 85px;
     text-align: center;
     font-size: calc(20px + 2vmin);
 }
@@ -104,3 +104,5 @@
     background-color: palevioletred;
     border: 2px solid red;
 }
+
+

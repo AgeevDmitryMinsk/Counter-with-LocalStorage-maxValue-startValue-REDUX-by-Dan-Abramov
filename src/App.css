@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(20px + 2vmin);
     color: white;
 }
 .container_global {
@@ -41,7 +41,7 @@
     color: #282c34;
     border-radius: 5px;
     margin-left: 5px;
-    font-size: 12px;
+    font-size: calc(20px + 2vmin);
 }
 
 .button_reset {
@@ -49,18 +49,18 @@
     color: #282c34;
     margin-left: 5px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: calc(20px + 2vmin);
 }
 
 .button_set {
     background-color: aqua;
     color: #282c34;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: calc(20px + 2vmin);
 }
 
 .red_count {
-    font-size: 20px;
+    font-size: calc(20px + 2vmin);
     color: red;
     font-weight: bold;
     transition: all .5s ease-in-out;
@@ -98,6 +98,7 @@
     border-radius: 5px;
     max-width: 50px;
     text-align: center;
+    font-size: calc(20px + 2vmin);
 }
 .inputValue_incorrect {
     background-color: palevioletred;

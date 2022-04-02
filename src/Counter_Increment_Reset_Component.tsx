@@ -68,14 +68,14 @@ const CounterIncrementResetComponent: React.FC<CounterIncrementResetComponentTyp
 			<Counter count={count} maxValue={maxValue} error={error} startValue={startValue}/>
 			<div className="container_buttons">
 
-				<UniversalButton name={"inc(univ)"}
+				<UniversalButton name={"increment"}
 								 className={universalButtonIncCSS}
 								 callback={addPlus}
 					// disabledOnCondition={disabledOnConditionIncrement(count)}
 								 disabledOnCondition={callBackDisabledOnConditionIncrement()}
 
 				/>
-				<UniversalButton name={"reset(univ)"}
+				<UniversalButton name={"reset"}
 								 className={universalButtonResetCSS}
 								 callback={resetCount}
 					// disabledOnCondition={disabledOnConditionReset(count)}

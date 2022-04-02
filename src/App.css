@@ -9,13 +9,18 @@
     font-size: calc(10px + 2vmin);
     color: white;
 }
-
+.container_global {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .container {
     min-height: 10px;
     min-width: 10px;
     border: 1px solid cyan;
     padding: 5px;
     border-radius: 5px;
+    margin: 0 20px;
 }
 
 .container_buttons {
@@ -44,7 +49,13 @@
     color: #282c34;
     margin-left: 5px;
     border-radius: 5px;
-    margin-left: 5px;
+    font-size: 12px;
+}
+
+.button_set {
+    background-color: aqua;
+    color: #282c34;
+    border-radius: 5px;
     font-size: 12px;
 }
 
@@ -80,4 +91,15 @@
     100% {
         transform: scale(1.1, 1.1);
     }
+}
+
+.inputValue {
+    border: 1px solid cyan;
+    border-radius: 5px;
+    max-width: 50px;
+    text-align: center;
+}
+.inputValue_incorrect {
+    background-color: palevioletred;
+    border: 2px solid red;
 }

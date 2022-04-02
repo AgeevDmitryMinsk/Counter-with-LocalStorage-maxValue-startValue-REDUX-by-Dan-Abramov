@@ -2,20 +2,29 @@ import React from 'react';
 
 type CounterType = {
 	count: number
+	maxValue: number
+	error:string
+	startValue:number
 }
 
 
-
 const Counter: React.FC<CounterType>
-	= ({count}) => {
+	= ({count, maxValue, error, startValue}) => {
 
-	let countCSSClass = count<5
+	let countCSSClass = count < maxValue
 		? "countCSS"
 		: "countCSS red_count"
 
-		return (
+	console.log(17, !!error)
+	console.log(18, !error)
+	console.log(20, startValue)
 
-			<div className={countCSSClass}>{count}</div>
+	return (
+		<>
+			{!error && (startValue !== maxValue) && ( startValue >=0 )  && <div className={countCSSClass}>enter values and press `set`</div>}
+			{!!error && count <= maxValue && <div className={countCSSClass}>{count}</div>}
+			{ !error && ((startValue === maxValue) || (startValue <0 ) )  && <div className="red_count">incorrect value!</div>}
+		</>
 	);
 };
 

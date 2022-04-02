@@ -9,6 +9,7 @@ type UniversalButtonType = {
 
 const UniversalButton:React.FC<UniversalButtonType>
 	= ({name, className, callback, disabledOnCondition}) => {
+
 	function onClickHandler(){
 		callback()
 	}

@@ -1,9 +1,12 @@
 import React, { ChangeEvent } from 'react'
 import UniversalButton from './UniversalButton'
+import { useSelector } from 'react-redux'
+import { AppRootState } from './state/store'
+import { initialStateType } from './state/counterValueReducer'
 
 type MaxStartValueComponentType = {
-    startValue: number
-    maxValue: number
+    startValue?: number
+    maxValue?: number
     callBackOnChangeMaxValue: (e: ChangeEvent<HTMLInputElement>) => void
     callBackSetValue: () => void
     count: number
@@ -12,13 +15,19 @@ type MaxStartValueComponentType = {
 }
 
 export const MaxStartValueComponent: React.FC<MaxStartValueComponentType> = ({
-    startValue,
-    maxValue,
+    // startValue,
+    // maxValue,
     callBackOnChangeMaxValue,
     callBackSetValue,
     callBackOnChangeStartValue,
     callBackDisabledOnConditionSet,
 }) => {
+    // избавляюсь от prop drilling, т.е. беру значения startValue,
+    // maxValue с помощью useSelector из state.counterState:
+    let { startValue, maxValue } = useSelector<AppRootState, initialStateType>(
+        (state) => state.counterState
+    )
+
     let inputValueCSS =
         startValue === maxValue
             ? 'inputValue inputValue_incorrect'

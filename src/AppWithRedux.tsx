@@ -1,39 +1,52 @@
-import React, { ChangeEvent, useEffect, useReducer, useState } from 'react'
+import React, { ChangeEvent, useEffect } from 'react'
 import './App.css'
 import { MaxStartValueComponent } from './MaxStartValueComponent'
 import CounterIncrementResetComponent from './Counter_Increment_Reset_Component'
-import { actions } from './state/counterValueReducer'
-
-export type WindowType = `counterWindow` | `MaxStartValue`
+import { useDispatch, useSelector } from 'react-redux'
+import { actions, initialStateType } from './state/counterValueReducer'
+import { AppRootState } from './state/store'
 
 function App() {
-    const [maxValue, setMaxValue] = useState<number>(5)
+    const dispatch = useDispatch()
+    let { count, startValue, maxValue, error, window } = useSelector<
+        AppRootState,
+        initialStateType
+    >((state) => state.counterState)
+    // const [count, setCount] = useState<number>(startValue)
+    console.log(count)
+
+    //const startValue = useSelector<AppRootState>((state) => state.startValue)
+    //const [startValue, setStartValue] = useState<number>(0)
+    //const [maxValue, setMaxValue] = useState<number>(5)
     //const [maxValue, maxValueDispath] = useReducer(maxValueReducer, 5)
-    const [startValue, setStartValue] = useState<number>(0)
-    const [count, setCount] = useState<number>(startValue)
-    const [error, setError] = useState(``)
-    const [window, setWindow] = useState<WindowType>(`counterWindow`)
+    //const [error, setError] = useState(``)
+    //const [window, setWindow] = useState<WindowType>(`counterWindow`)
 
     function addPlus() {
         if (count < maxValue) {
-            setCount(count + 1)
+            //setCount(count + 1)
+            dispatch(actions.incrementAC(count))
         }
     }
 
     function addMinus() {
         if (count > startValue) {
-            setCount(count - 1)
+            //setCount(count + 1)
+            dispatch(actions.decrementAC(count))
         }
     }
 
     function resetCount() {
-        setCount(startValue)
+        console.log(37, actions.startValueAC)
+        //setCount(startValue)
+        dispatch(actions.startValueAC(startValue))
     }
 
     function disabledOnConditionIncrement() {
         // console.log(28, startValue > maxValue) //false
         // console.log(29, !error) //true
         // console.log(30, !error || startValue > maxValue) // true
+        //return !error || startValue > maxValue
         return !error || startValue > maxValue
     }
 
@@ -56,18 +69,22 @@ function App() {
         if (maxValueKeyAsString && startValueKeyAsString) {
             let maxValueKeyAsNumber = JSON.parse(maxValueKeyAsString)
             let startValueKeyAsNumber = JSON.parse(startValueKeyAsString)
-            setMaxValue(maxValueKeyAsNumber)
-            setStartValue(startValueKeyAsNumber)
+            // setMaxValue(maxValueKeyAsNumber)
+            dispatch(actions.maxValueAC(maxValueKeyAsNumber))
+            // setStartValue(startValueKeyAsNumber)
+            dispatch(actions.startValueAC(startValueKeyAsNumber))
         }
     }
 
     function clearLocalStorageHandler() {
         localStorage.clear()
-        setCount(startValue)
+        // setCount(startValue)
+        dispatch(actions.startValueAC)
     }
 
     //1й useEffect сначала берет из localstorage сохраненные значения методом getFromLocalStorageHandler
-    useEffect(getFromLocalStorageHandler, [])
+    // useEffect(getFromLocalStorageHandler, [])
+    useEffect(getFromLocalStorageHandler, [dispatch])
 
     //2й useEffect обновляет значение count в localstorage
     // сначала 1й, затем 2й useEffect. Иначе count при перезагрузке
@@ -75,57 +92,72 @@ function App() {
     //useEffect(setToLocalStorageHandler, [count])
 
     function onChangeMaxValue(e: ChangeEvent<HTMLInputElement>) {
-        console.log(73)
+        console.log(94)
         let maxValue = Number(e.currentTarget.value)
         if (startValue <= maxValue) {
-            setMaxValue(maxValue)
-            setError(``)
+            // setMaxValue(maxValue)
+            dispatch(actions.maxValueAC(maxValue))
+            // setError(``)
+            dispatch(actions.errorAC(``))
         } else {
-            setError(``)
+            //setError(``)
+            dispatch(actions.errorAC(``))
             console.log(`startValue<maxValue`)
             console.log(error)
         }
     }
 
     function onChangeStartValue(e: ChangeEvent<HTMLInputElement>) {
-        console.log(77)
-        let startValue = Number(e.currentTarget.value)
+        console.log(`108 onChangeStartValue`)
+        startValue = Number(e.currentTarget.value)
         if (startValue <= maxValue) {
-            setStartValue(startValue)
-            setError(``)
+            //setStartValue(startValue)
+            dispatch(actions.startValueAC(startValue))
+            //setError(``)
+            dispatch(actions.errorAC(``))
             console.log(101, error)
         } else {
-            setError(``)
+            //setError(``)
+            dispatch(actions.errorAC(``))
             console.log(`startValue<maxValue`)
             console.log(error)
         }
     }
 
     function setValue() {
-        setMaxValue(maxValue)
-        setStartValue(startValue)
+        // setMaxValue(maxValue)
+        dispatch(actions.maxValueAC(maxValue))
+        //setStartValue(startValue)
+        dispatch(actions.sinhronizeStartValueForCounterAC(startValue))
         console.log(104, `maxValue=`, maxValue, `startValue=`, startValue)
-        setError('no errors')
-        setCount(startValue)
+        //setError('no errors')
+        dispatch(actions.errorAC(`no errors`))
+
+        // setCount(startValue)
+        dispatch(actions.startValueAC(startValue))
+
         setToLocalStorageHandler()
-        setWindow(`counterWindow`)
+        // setWindow(`counterWindow`)
+        dispatch(actions.windowAC(`counterWindow`))
     }
 
     function goFromCounterToMaxStartValue() {
-        setWindow(`MaxStartValue`)
+        //setWindow(`MaxStartValue`)
+        dispatch(actions.windowAC(`MaxStartValue`))
     }
 
     return (
         <div className="App">
-            <h4>Counter with LocalStorage + maxValue & startValue </h4>
+            <h4>Counter with LocalStorage + maxValue & startValue + REDUX</h4>
             <div className={'container_global'}>
                 {window === `MaxStartValue` && (
                     <MaxStartValueComponent
-                        startValue={startValue}
-                        maxValue={maxValue}
+                        // startValue={startValue}
+                        // maxValue={maxValue}
                         callBackOnChangeMaxValue={onChangeMaxValue}
                         callBackOnChangeStartValue={onChangeStartValue}
                         callBackSetValue={setValue}
+                        //count={count}
                         count={count}
                         callBackDisabledOnConditionSet={disabledOnConditionSet}
                     />

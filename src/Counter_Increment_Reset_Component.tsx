@@ -8,6 +8,7 @@ type CounterIncrementResetComponentType = {
     startValue: number
     error: string
     callBackAddPlus: () => void
+    callBackAddMinus: () => void
     callBackDisabledOnConditionIncrement: () => boolean
     callBackResetCount: () => void
     callBackDisabledOnConditionReset: (count: number) => boolean
@@ -25,22 +26,29 @@ const CounterIncrementResetComponent: React.FC<
     startValue,
     error,
     callBackAddPlus,
+    callBackAddMinus,
     callBackDisabledOnConditionIncrement,
     callBackResetCount,
     callBackDisabledOnConditionReset,
-    callBackSetToLocalStorageHandler,
-    callBackGetFromLocalStorageHandler,
-    callBackClearLocalStorageHandler,
+    // callBackSetToLocalStorageHandler,
+    // callBackGetFromLocalStorageHandler,
+    // callBackClearLocalStorageHandler,
     callBackSetFromCounter,
 }) => {
     let universalButtonIncCSS =
         count >= maxValue || !error ? 'button_inc button_opac' : 'button_inc'
+    let universalButtonDecrCSS =
+        count <= startValue || !error ? 'button_inc button_opac' : 'button_inc'
     let universalButtonResetCSS =
         count === startValue ? 'button_reset button_opac' : 'button_reset'
     let universalButtonSetInCounterCSS = 'button_set'
 
     function addPlus() {
         callBackAddPlus()
+    }
+
+    function addMinus() {
+        callBackAddMinus()
     }
 
     function resetCount() {
@@ -51,17 +59,17 @@ const CounterIncrementResetComponent: React.FC<
         callBackSetFromCounter()
     }
 
-    function setToLocalStorageHandler() {
-        callBackSetToLocalStorageHandler()
-    }
-
-    function getFromLocalStorageHandler() {
-        callBackGetFromLocalStorageHandler()
-    }
-
-    function clearLocalStorageHandler() {
-        callBackClearLocalStorageHandler()
-    }
+    // function setToLocalStorageHandler() {
+    //     callBackSetToLocalStorageHandler()
+    // }
+    //
+    // function getFromLocalStorageHandler() {
+    //     callBackGetFromLocalStorageHandler()
+    // }
+    //
+    // function clearLocalStorageHandler() {
+    //     callBackClearLocalStorageHandler()
+    // }
 
     return (
         <div className="container">
@@ -76,6 +84,14 @@ const CounterIncrementResetComponent: React.FC<
                     name={'increment'}
                     className={universalButtonIncCSS}
                     callback={addPlus}
+                    // disabledOnCondition={disabledOnConditionIncrement(count)}
+                    disabledOnCondition={callBackDisabledOnConditionIncrement()}
+                />
+
+                <UniversalButton
+                    name={'decrement'}
+                    className={universalButtonDecrCSS}
+                    callback={addMinus}
                     // disabledOnCondition={disabledOnConditionIncrement(count)}
                     disabledOnCondition={callBackDisabledOnConditionIncrement()}
                 />

@@ -58,33 +58,33 @@ function App() {
         return count === startValue
     }
 
-    function setToLocalStorageHandler() {
-        localStorage.setItem(`maxValueKey`, JSON.stringify(maxValue))
-        localStorage.setItem(`startValueKey`, JSON.stringify(startValue))
-    }
+    //1 function setToLocalStorageHandler() {
+    //     localStorage.setItem(`maxValueKey`, JSON.stringify(maxValue))
+    //     localStorage.setItem(`startValueKey`, JSON.stringify(startValue))
+    // }
 
-    function getFromLocalStorageHandler() {
-        let maxValueKeyAsString = localStorage.getItem(`maxValueKey`)
-        let startValueKeyAsString = localStorage.getItem(`startValueKey`)
-        if (maxValueKeyAsString && startValueKeyAsString) {
-            let maxValueKeyAsNumber = JSON.parse(maxValueKeyAsString)
-            let startValueKeyAsNumber = JSON.parse(startValueKeyAsString)
-            // setMaxValue(maxValueKeyAsNumber)
-            dispatch(actions.maxValueAC(maxValueKeyAsNumber))
-            // setStartValue(startValueKeyAsNumber)
-            dispatch(actions.startValueAC(startValueKeyAsNumber))
-        }
-    }
+    //2 function getFromLocalStorageHandler() {
+    //     let maxValueKeyAsString = localStorage.getItem(`maxValueKey`)
+    //     let startValueKeyAsString = localStorage.getItem(`startValueKey`)
+    //     if (maxValueKeyAsString && startValueKeyAsString) {
+    //         let maxValueKeyAsNumber = JSON.parse(maxValueKeyAsString)
+    //         let startValueKeyAsNumber = JSON.parse(startValueKeyAsString)
+    //         // setMaxValue(maxValueKeyAsNumber)
+    //         dispatch(actions.maxValueAC(maxValueKeyAsNumber))
+    //         // setStartValue(startValueKeyAsNumber)
+    //         dispatch(actions.startValueAC(startValueKeyAsNumber))
+    //     }
+    // }
 
-    function clearLocalStorageHandler() {
-        localStorage.clear()
-        // setCount(startValue)
-        dispatch(actions.startValueAC)
-    }
+    //3 function clearLocalStorageHandler() {
+    //     localStorage.clear()
+    //     // setCount(startValue)
+    //     dispatch(actions.startValueAC)
+    // }
 
     //1й useEffect сначала берет из localstorage сохраненные значения методом getFromLocalStorageHandler
     // useEffect(getFromLocalStorageHandler, [])
-    useEffect(getFromLocalStorageHandler, [dispatch])
+    //4 useEffect(getFromLocalStorageHandler, [dispatch])
 
     //2й useEffect обновляет значение count в localstorage
     // сначала 1й, затем 2й useEffect. Иначе count при перезагрузке
@@ -136,7 +136,7 @@ function App() {
         // setCount(startValue)
         dispatch(actions.startValueAC(startValue))
 
-        setToLocalStorageHandler()
+        //setToLocalStorageHandler()
         // setWindow(`counterWindow`)
         dispatch(actions.windowAC(`counterWindow`))
     }
@@ -178,15 +178,15 @@ function App() {
                         callBackDisabledOnConditionReset={
                             disabledOnConditionReset
                         }
-                        callBackSetToLocalStorageHandler={
-                            setToLocalStorageHandler
-                        }
-                        callBackGetFromLocalStorageHandler={
-                            getFromLocalStorageHandler
-                        }
-                        callBackClearLocalStorageHandler={
-                            clearLocalStorageHandler
-                        }
+                        // callBackSetToLocalStorageHandler={
+                        //     setToLocalStorageHandler
+                        // }
+                        // callBackGetFromLocalStorageHandler={
+                        //     getFromLocalStorageHandler
+                        // }
+                        // callBackClearLocalStorageHandler={
+                        //     clearLocalStorageHandler
+                        // }
                         callBackSetFromCounter={goFromCounterToMaxStartValue}
                     />
                 )}

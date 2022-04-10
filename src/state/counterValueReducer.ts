@@ -20,9 +20,9 @@ type actionReducerType = ReturnType<PropertiesType<typeof actions>>
 type PropertiesType<T> = T extends { [key: string]: infer U } ? U : never
 
 export const counterValueReducer = (
-    state = initialState,
+    state: initialStateType = initialState,
     action: actionReducerType
-) => {
+): initialStateType => {
     switch (action.type) {
         case 'INCREASE': {
             console.log(28, state)
@@ -98,7 +98,7 @@ export const actions = {
             payload: { value },
         } as const
     },
-    windowAC: (value: string) => {
+    windowAC: (value: WindowType) => {
         return {
             type: `SET-WINDOW-VALUE`,
             payload: { value },

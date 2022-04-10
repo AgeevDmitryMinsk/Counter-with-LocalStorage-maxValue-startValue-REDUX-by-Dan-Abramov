@@ -12,9 +12,9 @@ type CounterIncrementResetComponentType = {
     callBackDisabledOnConditionIncrement: () => boolean
     callBackResetCount: () => void
     callBackDisabledOnConditionReset: (count: number) => boolean
-    callBackSetToLocalStorageHandler: () => void
-    callBackGetFromLocalStorageHandler: () => void
-    callBackClearLocalStorageHandler: () => void
+    callBackSetToLocalStorageHandler?: () => void
+    callBackGetFromLocalStorageHandler?: () => void
+    callBackClearLocalStorageHandler?: () => void
     callBackSetFromCounter: () => void
 }
 

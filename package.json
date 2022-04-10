@@ -1,6 +1,6 @@
 {
   "name": "exam25_02_22",
-  "homepage": "https://ageevdmitryminsk.github.io/React_Increment_Reset_Btn/",
+  "homepage": "https://ageevdmitryminsk.github.io/Counter-with-LocalStorage-maxValue-startValue-REDUX-by-Dan-Abramov/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

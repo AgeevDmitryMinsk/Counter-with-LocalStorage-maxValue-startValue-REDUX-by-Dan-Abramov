@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/React_Increment_Reset_Btn/static/css/main.cb9cce6a.css",
-    "main.js": "/React_Increment_Reset_Btn/static/js/main.6bd44db5.js",
-    "static/js/787.ea573bca.chunk.js": "/React_Increment_Reset_Btn/static/js/787.ea573bca.chunk.js",
-    "index.html": "/React_Increment_Reset_Btn/index.html",
-    "main.cb9cce6a.css.map": "/React_Increment_Reset_Btn/static/css/main.cb9cce6a.css.map",
-    "main.6bd44db5.js.map": "/React_Increment_Reset_Btn/static/js/main.6bd44db5.js.map",
-    "787.ea573bca.chunk.js.map": "/React_Increment_Reset_Btn/static/js/787.ea573bca.chunk.js.map"
+    "main.css": "/Counter-with-LocalStorage-maxValue-startValue-REDUX-by-Dan-Abramov/static/css/main.cb9cce6a.css",
+    "main.js": "/Counter-with-LocalStorage-maxValue-startValue-REDUX-by-Dan-Abramov/static/js/main.27d81be6.js",
+    "static/js/787.ea573bca.chunk.js": "/Counter-with-LocalStorage-maxValue-startValue-REDUX-by-Dan-Abramov/static/js/787.ea573bca.chunk.js",
+    "index.html": "/Counter-with-LocalStorage-maxValue-startValue-REDUX-by-Dan-Abramov/index.html",
+    "main.cb9cce6a.css.map": "/Counter-with-LocalStorage-maxValue-startValue-REDUX-by-Dan-Abramov/static/css/main.cb9cce6a.css.map",
+    "main.27d81be6.js.map": "/Counter-with-LocalStorage-maxValue-startValue-REDUX-by-Dan-Abramov/static/js/main.27d81be6.js.map",
+    "787.ea573bca.chunk.js.map": "/Counter-with-LocalStorage-maxValue-startValue-REDUX-by-Dan-Abramov/static/js/787.ea573bca.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cb9cce6a.css",
-    "static/js/main.6bd44db5.js"
+    "static/js/main.27d81be6.js"
   ]
 }

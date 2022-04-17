@@ -33,11 +33,12 @@ export const counterValueReducer = (
             return { ...state, count: state.count - 1 }
         }
         case 'SET-START-VALUE': {
-            console.log(33, state)
-            console.log(34, state.startValue)
+            console.log(36, state)
+            console.log(37, state.startValue)
             return {
                 ...state,
                 startValue: action.payload.value,
+                count: action.payload.value,
             }
         }
         case 'Start-Value-For-Counter': {
